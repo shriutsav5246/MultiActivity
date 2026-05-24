@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryBlue">#3949AB</color>
+    <color name="primaryDark">#283593</color>
+    <color name="accentCyan">#00ACC1</color>
+    <color name="successGreen">#43A047</color>
+    <color name="errorRed">#E53935</color>
+    <color name="backgroundGray">#F5F7FA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="calculatorBackground">#111827</color>
+    <color name="calculatorDisplay">#1F2937</color>
+    <color name="calculatorNumber">#374151</color>
+    <color name="calculatorOperator">#8B5CF6</color>
+    <color name="calculatorSpecial">#4B5563</color>
+</resources>

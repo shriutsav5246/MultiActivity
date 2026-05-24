@@ -1,0 +1,32 @@
+<resources>
+
+    <style name="Theme.MultiActivity" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="CalcBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">82dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <style name="CalcNumber" parent="CalcBase">
+        <item name="android:background">@drawable/calculator_number_button</item>
+    </style>
+
+    <style name="CalcOperator" parent="CalcBase">
+        <item name="android:background">@drawable/calculator_operator_button</item>
+    </style>
+
+    <style name="CalcSpecial" parent="CalcBase">
+        <item name="android:background">@drawable/calculator_special_button</item>
+    </style>
+
+    <style name="CalcEquals" parent="CalcBase">
+        <item name="android:background">@drawable/calculator_equals_button</item>
+    </style>
+
+</resources>
