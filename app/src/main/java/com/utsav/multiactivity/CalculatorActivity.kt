@@ -1,265 +1,254 @@
 package com.utsav.multiactivity
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.HorizontalScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.Stack
+import net.objecthunter.exp4j.ExpressionBuilder
 
 class CalculatorActivity : AppCompatActivity() {
 
     private lateinit var tvExpression: TextView
     private lateinit var tvResult: TextView
-    private lateinit var expressionScroll: HorizontalScrollView
 
     private var expression = ""
+    private var openBracketCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
 
+        tvExpression = findViewById(R.id.tvExpression)
+        tvResult = findViewById(R.id.tvResult)
+
         findViewById<TextView>(R.id.btnBackCalculator).setOnClickListener {
             finish()
         }
 
-        tvExpression = findViewById(R.id.tvExpression)
-        tvResult = findViewById(R.id.tvResult)
-        expressionScroll = findViewById(R.id.expressionScroll)
-
-        setupButtons()
-    }
-
-    private fun setupButtons() {
-        val numberIds = listOf(
-            R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,
-            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9
+        val buttonMap: Map<Int, String> = mapOf(
+            R.id.btn0 to "0",
+            R.id.btn1 to "1",
+            R.id.btn2 to "2",
+            R.id.btn3 to "3",
+            R.id.btn4 to "4",
+            R.id.btn5 to "5",
+            R.id.btn6 to "6",
+            R.id.btn7 to "7",
+            R.id.btn8 to "8",
+            R.id.btn9 to "9",
+            R.id.btnDot to ".",
+            R.id.btnPlus to "+",
+            R.id.btnMinus to "-",
+            R.id.btnMultiply to "*",
+            R.id.btnDivide to "/",
+            R.id.btnPercent to "%",
+            R.id.btnParenthesis to "()"
         )
 
-        numberIds.forEach {
-            findViewById<Button>(it).setOnClickListener { btn ->
-                appendValue((btn as Button).text.toString())
+        for ((id, value) in buttonMap) {
+            findViewById<TextView>(id).setOnClickListener {
+                handleInput(value)
             }
         }
 
-        findViewById<Button>(R.id.btnDot).setOnClickListener { appendDecimal() }
-        findViewById<Button>(R.id.btnPlus).setOnClickListener { appendOperator("+") }
-        findViewById<Button>(R.id.btnMinus).setOnClickListener { appendMinus() }
-        findViewById<Button>(R.id.btnMultiply).setOnClickListener { appendOperator("*") }
-        findViewById<Button>(R.id.btnDivide).setOnClickListener { appendOperator("/") }
-
-        findViewById<Button>(R.id.btnParenthesis).setOnClickListener {
-            appendSmartParenthesis()
-        }
-
-        findViewById<Button>(R.id.btnPercent).setOnClickListener {
-            appendPercent()
-        }
-
-        findViewById<Button>(R.id.btnClear).setOnClickListener {
+        findViewById<TextView>(R.id.btnClear).setOnClickListener {
             expression = ""
+            openBracketCount = 0
             updateDisplay()
         }
 
-        findViewById<Button>(R.id.btnBackspace).setOnClickListener {
+        findViewById<TextView>(R.id.btnBackspace).setOnClickListener {
             if (expression.isNotEmpty()) {
+                val last = expression.last()
+
+                if (last == '(') openBracketCount--
+                if (last == ')') openBracketCount++
+
                 expression = expression.dropLast(1)
                 updateDisplay()
             }
         }
 
-        findViewById<Button>(R.id.btnEquals).setOnClickListener {
+        findViewById<TextView>(R.id.btnEquals).setOnClickListener {
             evaluateFinal()
+        }
+
+        updateDisplay()
+    }
+
+    private fun handleInput(value: String) {
+        when (value) {
+            "()" -> handleBracket()
+            ".", "+", "-", "*", "/", "%" -> handleOperator(value)
+            else -> {
+                expression += value
+                updateDisplay()
+            }
         }
     }
 
-    private fun appendValue(value: String) {
-        expression += value
-        updateDisplay()
-    }
-
-    private fun appendOperator(op: String) {
-        if (expression.isEmpty()) return
-        if (expression.last() in "+-*/.%(") return
-
-        expression += op
-        updateDisplay()
-    }
-
-    private fun appendMinus() {
+    private fun handleBracket() {
         if (expression.isEmpty()) {
-            expression = "-"
+            expression += "("
+            openBracketCount++
         } else {
             val last = expression.last()
 
-            if (last in "+-*/(") {
-                expression += "-"
-            } else if (last !in ".%") {
-                expression += "-"
+            if (last.isDigit() || last == ')') {
+                if (openBracketCount > 0) {
+                    expression += ")"
+                    openBracketCount--
+                } else {
+                    expression += "*("
+                    openBracketCount++
+                }
+            } else {
+                expression += "("
+                openBracketCount++
             }
         }
 
         updateDisplay()
     }
 
-    private fun appendDecimal() {
-        val token = expression.takeLastWhile {
-            it.isDigit() || it == '.' || it == '-'
+    private fun handleOperator(operator: String) {
+        if (expression.isEmpty()) {
+            if (operator == "-") {
+                expression += "-"
+                updateDisplay()
+            }
+            return
         }
 
-        if (token.contains(".")) return
+        val last = expression.last()
 
-        if (expression.isEmpty() || expression.last() in "+-*/(") {
-            expression += "0."
-        } else {
+        if (operator == ".") {
+            if (!canAddDecimal()) return
             expression += "."
-        }
-
-        updateDisplay()
-    }
-
-    private fun appendSmartParenthesis() {
-        val open = expression.count { it == '(' }
-        val close = expression.count { it == ')' }
-
-        if (expression.isEmpty() || expression.last() in "+-*/(") {
-            expression += "("
-        } else if (open > close && (expression.last().isDigit() || expression.last() == '%')) {
-            expression += ")"
-        }
-
-        updateDisplay()
-    }
-
-    private fun appendPercent() {
-        if (expression.isNotEmpty() &&
-            (expression.last().isDigit() || expression.last() == ')')) {
-            expression += "%"
             updateDisplay()
+            return
         }
+
+        if (last == '(') {
+            if (operator == "-") {
+                expression += "-"
+                updateDisplay()
+            }
+            return
+        }
+
+        if (isOperator(last)) {
+            if (operator == "-" && canUseUnaryMinus(last)) {
+                expression += "-"
+                updateDisplay()
+            }
+            return
+        }
+
+        expression += operator
+        updateDisplay()
+    }
+
+    private fun canUseUnaryMinus(last: Char): Boolean {
+        return last == '+' || last == '-' || last == '*' || last == '/' || last == '%'
+    }
+
+    private fun canAddDecimal(): Boolean {
+        if (expression.isEmpty()) return true
+
+        var i = expression.length - 1
+
+        while (i >= 0) {
+            val ch = expression[i]
+
+            if (isOperator(ch) || ch == '(' || ch == ')') break
+            if (ch == '.') return false
+
+            i--
+        }
+
+        return true
+    }
+
+    private fun isOperator(ch: Char): Boolean {
+        return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%'
+    }
+
+    private fun isExpressionValid(): Boolean {
+        if (expression.isEmpty()) return false
+        if (openBracketCount != 0) return false
+
+        val last = expression.last()
+
+        if (isOperator(last) || last == '.') return false
+        if (expression.contains("()")) return false
+
+        for (i in 1 until expression.length) {
+            val prev = expression[i - 1]
+            val curr = expression[i]
+
+            if (isOperator(prev) && isOperator(curr)) {
+                if (!(curr == '-' && canUseUnaryMinus(prev))) {
+                    return false
+                }
+            }
+        }
+
+        return true
     }
 
     private fun updateDisplay() {
-        tvExpression.text = expression
+        tvExpression.text = if (expression.isEmpty()) "0" else expression
 
-        expressionScroll.post {
-            expressionScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
-        }
-
-        if (expression.isEmpty()) {
-            tvResult.text = "0"
+        if (!isExpressionValid()) {
+            tvResult.text = ""
             return
         }
 
         try {
-            val processed = preprocessExpression(expression)
-            val result = evaluate(processed)
-            tvResult.text = formatResult(result)
-        } catch (_: Exception) {
-            tvResult.text = "..."
+            val exp = expression.replace("%", "/100")
+            val result = ExpressionBuilder(exp).build().evaluate()
+
+            if (result.isInfinite() || result.isNaN()) {
+                tvResult.text = "Invalid"
+            } else {
+                tvResult.text =
+                    if (result % 1 == 0.0)
+                        result.toLong().toString()
+                    else
+                        result.toString()
+            }
+
+        } catch (e: Exception) {
+            tvResult.text = ""
         }
     }
 
     private fun evaluateFinal() {
+        if (!isExpressionValid()) {
+            tvResult.text = "Invalid Expression"
+            return
+        }
+
         try {
-            val processed = preprocessExpression(expression)
-            val result = evaluate(processed)
-            val formatted = formatResult(result)
+            val exp = expression.replace("%", "/100")
+            val result = ExpressionBuilder(exp).build().evaluate()
 
-            expression = formatted
-            tvExpression.text = formatted
-            tvResult.text = formatted
-        } catch (_: Exception) {
-            tvResult.text = "Error"
-        }
-    }
-
-    private fun preprocessExpression(expr: String): String {
-        var processed = expr.replace("%", "/100")
-
-        if (processed.startsWith("-")) {
-            processed = "0$processed"
-        }
-
-        processed = processed.replace("(-", "(0-")
-
-        return processed
-    }
-
-    private fun formatResult(value: Double): String {
-        return if (value % 1 == 0.0) {
-            value.toInt().toString()
-        } else {
-            value.toString()
-        }
-    }
-
-    private fun evaluate(expr: String): Double {
-        val values = Stack<Double>()
-        val ops = Stack<Char>()
-        var i = 0
-
-        while (i < expr.length) {
-            when {
-                expr[i] == '(' -> {
-                    ops.push(expr[i])
-                    i++
-                }
-
-                expr[i].isDigit() || expr[i] == '.' -> {
-                    val sb = StringBuilder()
-
-                    while (i < expr.length &&
-                        (expr[i].isDigit() || expr[i] == '.')) {
-                        sb.append(expr[i++])
-                    }
-
-                    values.push(sb.toString().toDouble())
-                }
-
-                expr[i] == ')' -> {
-                    while (ops.peek() != '(') {
-                        values.push(applyOperation(ops.pop(), values.pop(), values.pop()))
-                    }
-                    ops.pop()
-                    i++
-                }
-
-                expr[i] in "+-*/" -> {
-                    while (ops.isNotEmpty() && hasPrecedence(expr[i], ops.peek())) {
-                        values.push(applyOperation(ops.pop(), values.pop(), values.pop()))
-                    }
-                    ops.push(expr[i])
-                    i++
-                }
-
-                else -> throw Exception()
+            if (result.isInfinite() || result.isNaN()) {
+                tvResult.text = "Division by Zero"
+                return
             }
-        }
 
-        while (ops.isNotEmpty()) {
-            values.push(applyOperation(ops.pop(), values.pop(), values.pop()))
-        }
+            val finalResult =
+                if (result % 1 == 0.0)
+                    result.toLong().toString()
+                else
+                    result.toString()
 
-        return values.pop()
-    }
+            tvResult.text = finalResult
+            expression = finalResult
 
-    private fun hasPrecedence(op1: Char, op2: Char): Boolean {
-        if (op2 == '(' || op2 == ')') return false
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) return false
-        return true
-    }
-
-    private fun applyOperation(op: Char, b: Double, a: Double): Double {
-        return when (op) {
-            '+' -> a + b
-            '-' -> a - b
-            '*' -> a * b
-            '/' -> {
-                if (b == 0.0) throw ArithmeticException()
-                a / b
-            }
-            else -> 0.0
+        } catch (e: Exception) {
+            tvResult.text = "Invalid Expression"
         }
     }
 }
