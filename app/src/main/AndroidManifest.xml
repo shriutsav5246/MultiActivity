@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiActivity">
 
+        <activity android:name=".BmiActivity" />
+        <activity android:name=".GcdLcmActivity" />
+        <activity android:name=".FactorialActivity" />
+        <activity android:name=".FibonacciActivity" />
+        <activity android:name=".NumberSystemActivity" />
         <activity android:name=".PrimeActivity" />
         <activity android:name=".EvenOddActivity" />
         <activity android:name=".CalculatorActivity" />

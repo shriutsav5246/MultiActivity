@@ -34,6 +34,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="36dp" />
 
+        <!-- Calculator -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardCalculator"
             android:layout_width="match_parent"
@@ -69,11 +70,10 @@
                     android:text="Advanced Arithmetic &amp; Expression Solver"
                     android:textColor="#D1D5DB"
                     android:textSize="15sp" />
-
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Prime -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPrime"
             android:layout_width="match_parent"
@@ -109,11 +109,10 @@
                     android:text="Prime Validation + Prime Number Generation"
                     android:textColor="#D1D5DB"
                     android:textSize="15sp" />
-
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Even Odd -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardEvenOdd"
             android:layout_width="match_parent"
@@ -149,11 +148,205 @@
                     android:text="Live Number Parity Detection"
                     android:textColor="#D1D5DB"
                     android:textSize="15sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Number System -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardNumberSystem"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#1F2937"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:strokeColor="#06B6D4"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number System Converter"
+                    android:textColor="#06B6D4"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Binary • Octal • Decimal • Hexadecimal"
+                    android:textColor="#D1D5DB"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fibonacci -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFibonacci"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#1F2937"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:strokeColor="#EC4899"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fibonacci Generator"
+                    android:textColor="#EC4899"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Series Generator + Nth Term Finder"
+                    android:textColor="#D1D5DB"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Factorial -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFactorial"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#1F2937"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:strokeColor="#14B8A6"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Factorial Calculator"
+                    android:textColor="#14B8A6"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Factorial Result + Stepwise Breakdown"
+                    android:textColor="#D1D5DB"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGcdLcm"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#1F2937"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:strokeColor="#8B5CF6"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GCD / LCM Finder"
+                    android:textColor="#8B5CF6"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Euclidean Algorithm + Stepwise Solution"
+                    android:textColor="#D1D5DB"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBmi"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#1F2937"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:strokeColor="#EF4444"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Body Fitness Analyzer"
+                    android:textColor="#EF4444"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="BMI • BMR • Calories • Protein • Goal Advice"
+                    android:textColor="#D1D5DB"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
-
 </ScrollView>

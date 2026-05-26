@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#081225"
+    android:padding="16dp">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/btnBackNumberSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="←"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number System Converter"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Input Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/calculator_display_bg"
+        android:padding="24dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Input Type"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerInputType"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="14dp"
+            android:background="#1F2937"
+            android:paddingHorizontal="12dp"
+            android:popupBackground="#1F2937" />
+
+        <EditText
+            android:id="@+id/etInputNumber"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="18dp"
+            android:background="#1F2937"
+            android:hint="Enter Number"
+            android:textColorHint="#9CA3AF"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnClearNumberSystem"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="CLEAR"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#DC2626"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+    <!-- Output Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/calculator_display_bg"
+        android:padding="24dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/tvBinary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Binary: -"
+            android:textColor="#22C55E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOctal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Octal: -"
+            android:textColor="#3B82F6"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:id="@+id/tvDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decimal: -"
+            android:textColor="#F59E0B"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:id="@+id/tvHex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hexadecimal: -"
+            android:textColor="#A855F7"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="14dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#081225"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/btnBackBmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="←"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Body Fitness Analyzer"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <!-- Input Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/calculator_display_bg"
+            android:padding="24dp"
+            android:layout_marginTop="16dp">
+
+            <!-- Gender -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Gender"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textColor="@android:color/white" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="30dp" />
+            </RadioGroup>
+
+            <!-- Age -->
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937"
+                android:hint="Enter Age (18–80)"
+                android:textColorHint="#9CA3AF"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:inputType="number" />
+
+            <!-- Weight -->
+            <EditText
+                android:id="@+id/etWeight"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937"
+                android:hint="Enter Weight (kg) (Optional)"
+                android:textColorHint="#9CA3AF"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:inputType="numberDecimal" />
+
+            <!-- Height Mode -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height Input Mode"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp" />
+
+            <Spinner
+                android:id="@+id/spinnerHeightMode"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="#1F2937" />
+
+            <!-- CM Input -->
+            <EditText
+                android:id="@+id/etHeightCm"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937"
+                android:hint="Enter Height (cm)"
+                android:textColorHint="#9CA3AF"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:inputType="numberDecimal" />
+
+            <!-- Feet -->
+            <EditText
+                android:id="@+id/etFeet"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937"
+                android:hint="Enter Height (feet)"
+                android:textColorHint="#9CA3AF"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:visibility="gone"
+                android:inputType="number" />
+
+            <!-- Inches -->
+            <EditText
+                android:id="@+id/etInches"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937"
+                android:hint="Enter Height (inches)"
+                android:textColorHint="#9CA3AF"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:visibility="gone"
+                android:inputType="numberDecimal" />
+
+            <!-- Activity -->
+            <Spinner
+                android:id="@+id/spinnerActivity"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937" />
+
+            <!-- Goal -->
+            <Spinner
+                android:id="@+id/spinnerGoal"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="#1F2937" />
+
+            <Button
+                android:id="@+id/btnClearBmi"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="CLEAR"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#DC2626"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        <!-- Output Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/calculator_display_bg"
+            android:padding="24dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tvBmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BMI: -"
+                android:textColor="#22C55E"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category: -"
+                android:textColor="#06B6D4"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvHealthyRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Healthy Weight Range: -"
+                android:textColor="#F59E0B"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvBmr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BMR: -"
+                android:textColor="#A855F7"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvMaintenance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maintenance Calories: -"
+                android:textColor="#EC4899"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvGoalCalories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Goal Calories: -"
+                android:textColor="#14B8A6"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvProtein"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Protein Target: -"
+                android:textColor="#F97316"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp" />
+
+            <TextView
+                android:id="@+id/tvAdvice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Advice: -"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
