@@ -19,7 +19,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- TOP BAR -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +68,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Calculator -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardCalculator"
                 android:layout_width="match_parent"
@@ -108,7 +106,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Prime -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPrime"
                 android:layout_width="match_parent"
@@ -147,7 +144,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Even Odd -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardEvenOdd"
                 android:layout_width="match_parent"
@@ -186,7 +182,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Number System -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardNumberSystem"
                 android:layout_width="match_parent"
@@ -225,7 +220,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Fibonacci -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardFibonacci"
                 android:layout_width="match_parent"
@@ -264,7 +258,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Factorial -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardFactorial"
                 android:layout_width="match_parent"
@@ -303,7 +296,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- GCD LCM -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardGcdLcm"
                 android:layout_width="match_parent"
@@ -342,7 +334,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- BMI -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardBmi"
                 android:layout_width="match_parent"
