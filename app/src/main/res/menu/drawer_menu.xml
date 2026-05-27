@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navSettings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/navAbout"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="About App" />
+
+    <item
+        android:id="@+id/navPrivacy"
+        android:icon="@android:drawable/ic_lock_lock"
+        android:title="Privacy Policy" />
+
+    <item
+        android:id="@+id/navShare"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Share App" />
+
+</menu>
